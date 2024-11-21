@@ -16,7 +16,10 @@ const itActsAsFavoriteRestaurantModel = (favoriteRestaurant) => {
     favoriteRestaurant.putRestaurant({ id: 1 });
     favoriteRestaurant.putRestaurant({ id: 2 });
 
-    expect(await favoriteRestaurant.getAllRestaurants()).toEqual([{ id: 1 }, { id: 2 }]);
+    expect(await favoriteRestaurant.getAllRestaurants()).toEqual([
+      { id: 1 },
+      { id: 2 },
+    ]);
   });
 
   it('should remove favorite restaurant', async () => {
@@ -26,7 +29,10 @@ const itActsAsFavoriteRestaurantModel = (favoriteRestaurant) => {
 
     await favoriteRestaurant.deleteRestaurant(1);
 
-    expect(await favoriteRestaurant.getAllRestaurants()).toEqual([{ id: 2 }, { id: 3 }]);
+    expect(await favoriteRestaurant.getAllRestaurants()).toEqual([
+      { id: 2 },
+      { id: 3 },
+    ]);
   });
 
   it('should handle request to remove a restaurant even though the restaurant has not been added', async () => {
@@ -36,7 +42,11 @@ const itActsAsFavoriteRestaurantModel = (favoriteRestaurant) => {
 
     await favoriteRestaurant.deleteRestaurant(4);
 
-    expect(await favoriteRestaurant.getAllRestaurants()).toEqual([{ id: 1 }, { id: 2 }, { id: 3 }]);
+    expect(await favoriteRestaurant.getAllRestaurants()).toEqual([
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
+    ]);
   });
 
   it('should be able to search for restaurants', async () => {

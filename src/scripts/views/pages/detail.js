@@ -47,8 +47,12 @@ const detail = {
     });
 
     ReviewInitiator.init({
-      customerReviewContainer: document.querySelector('.detailRestaurant-review'),
-      customerReviewFormContainer: document.querySelector('#customerReviewFormContainer'),
+      customerReviewContainer: document.querySelector(
+        '.detailRestaurant-review',
+      ),
+      customerReviewFormContainer: document.querySelector(
+        '#customerReviewFormContainer',
+      ),
     });
   },
 };

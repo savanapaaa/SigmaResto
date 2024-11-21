@@ -25,7 +25,9 @@ describe('Showing all favorite restaurants', () => {
       const restaurants = [];
       presenter._displayRestaurants(restaurants);
 
-      expect(document.querySelectorAll('.restaurant-item__not__found').length).toEqual(1);
+      expect(
+        document.querySelectorAll('.restaurant-item__not__found').length,
+      ).toEqual(1);
     });
 
     it('should ask for the favorite restaurants', () => {
@@ -46,7 +48,10 @@ describe('Showing all favorite restaurants', () => {
         done();
       });
 
-      const favoriteRestaurants = spyOnAllFunctions(FavoriteRestaurantDB, false);
+      const favoriteRestaurants = spyOnAllFunctions(
+        FavoriteRestaurantDB,
+        false,
+      );
       favoriteRestaurants.getAllRestaurants.and.returnValues([
         {
           id: 11,

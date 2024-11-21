@@ -19,7 +19,10 @@ describe('Searching Restaurants', () => {
   };
   const constructPresenter = () => {
     favoriteRestaurants = spyOnAllFunctions(FavoriteRestaurantDB);
-    presenter = new FavoriteRestaurantSearchPresenter({ favoriteRestaurants, view });
+    presenter = new FavoriteRestaurantSearchPresenter({
+      favoriteRestaurants,
+      view,
+    });
   };
 
   beforeEach(() => {
@@ -37,7 +40,9 @@ describe('Searching Restaurants', () => {
     it('should ask the model to search for liked restaurants', () => {
       searchRestaurants('restaurant a');
 
-      expect(favoriteRestaurants.searchRestaurants).toHaveBeenCalledWith('restaurant a');
+      expect(favoriteRestaurants.searchRestaurants).toHaveBeenCalledWith(
+        'restaurant a',
+      );
     });
 
     it('should show the found restaurants', () => {
@@ -54,7 +59,9 @@ describe('Searching Restaurants', () => {
     it('should show the name of the found restaurants', () => {
       presenter._showFoundRestaurants([{ id: 1, name: 'Satu' }]);
 
-      expect(document.querySelectorAll('.list-item__title').item(0).textContent).toEqual('Satu');
+      expect(
+        document.querySelectorAll('.list-item__title').item(0).textContent,
+      ).toEqual('Satu');
     });
 
     it('should show - when the restaurant returned does not contain a name', (done) => {
@@ -97,11 +104,15 @@ describe('Searching Restaurants', () => {
   describe('When no favorite restaurants could be found', () => {
     it('should show the empty message', (done) => {
       document.getElementById('lists').addEventListener('lists:updated', () => {
-        expect(document.querySelectorAll('.restaurant-item__not__found').length).toEqual(1);
+        expect(
+          document.querySelectorAll('.restaurant-item__not__found').length,
+        ).toEqual(1);
         done();
       });
 
-      favoriteRestaurants.searchRestaurants.withArgs('restaurant a').and.returnValues([]);
+      favoriteRestaurants.searchRestaurants
+        .withArgs('restaurant a')
+        .and.returnValues([]);
 
       searchRestaurants('restaurant a');
     });
@@ -112,7 +123,9 @@ describe('Searching Restaurants', () => {
         done();
       });
 
-      favoriteRestaurants.searchRestaurants.withArgs('restaurant a').and.returnValues([]);
+      favoriteRestaurants.searchRestaurants
+        .withArgs('restaurant a')
+        .and.returnValues([]);
 
       searchRestaurants('restaurant a');
     });

@@ -15,7 +15,8 @@ const ReviewInitiator = {
   },
 
   _renderForm() {
-    this._customerReviewFormContainer.innerHTML = createCustomerReviewFormTemplate();
+    this._customerReviewFormContainer.innerHTML =
+      createCustomerReviewFormTemplate();
     this._isFormSubmitted();
   },
 

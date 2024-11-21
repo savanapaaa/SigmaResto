@@ -49,16 +49,22 @@ Scenario('searching restaurants', async ({ I }) => {
   I.seeElement('#query');
 
   const searchQuery = titles[1].substring(1, 3);
-  const matchingRestaurants = titles.filter((title) => title.indexOf(searchQuery) !== -1);
+  const matchingRestaurants = titles.filter(
+    (title) => title.indexOf(searchQuery) !== -1,
+  );
 
   I.fillField('#query', searchQuery);
   I.pressKey('Enter');
 
-  const visibleLikedRestaurants = await I.grabNumberOfVisibleElements('.list-item__content');
+  const visibleLikedRestaurants = await I.grabNumberOfVisibleElements(
+    '.list-item__content',
+  );
   assert.strictEqual(matchingRestaurants.length, visibleLikedRestaurants);
 
   matchingRestaurants.forEach(async (title, index) => {
-    const visibleTitle = await I.grabTextFrom(locate('.list-item__title').at(index + 1));
+    const visibleTitle = await I.grabTextFrom(
+      locate('.list-item__title').at(index + 1),
+    );
     assert.strictEqual(title, visibleTitle);
   });
 });

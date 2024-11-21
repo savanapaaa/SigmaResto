@@ -76,7 +76,8 @@ const createRestaurantListTemplate = (restaurant) => `
     </article>
 `;
 
-const createCustomerReviewFormTemplate = () => `<form class="form-review" id="form-review">
+const createCustomerReviewFormTemplate =
+  () => `<form class="form-review" id="form-review">
 <h2>Submit Your Review</h2>
 <div class="form-group">
     <label for="inputName">Name:</label>
